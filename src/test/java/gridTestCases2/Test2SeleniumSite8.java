@@ -1,6 +1,7 @@
 package gridTestCases2;
 
 import java.net.URL;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,6 +24,7 @@ public class Test2SeleniumSite8   {
 	public void testSeleniumPage(String gridUrl) throws Exception {
 		ChromeOptions options = new ChromeOptions();
 		driver = new RemoteWebDriver(new URL(gridUrl), options);
+		driver.manage().timeouts().setScriptTimeout(Duration.ofSeconds(300));
 		driver.get("https://selenium.dev/");
 		System.out.println("Url loaded");
 		System.out.println("Intentional Wait");
