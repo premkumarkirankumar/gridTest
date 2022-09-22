@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 	<test name="PackageTest" parallel="classes" thread-count="10">
-	 	<parameter name = "gridUrl" value="http://52.186.164.69:4444"/>
+	 	<parameter name = "gridUrl" value="http://20.85.186.78:4444"/>
 		<packages>
 			<package name="gridTestCases2" />
 		</packages>
