@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 
 import io.qameta.allure.Description;
 import utils.Base;
+import utils.RetryCommand;
 
 public class Test2SeleniumSite21   {
 	public static WebDriver driver;
@@ -23,7 +24,11 @@ public class Test2SeleniumSite21   {
 	@Test
 	public void testSeleniumPage(String gridUrl) throws Exception {
 		ChromeOptions options = new ChromeOptions();
-		driver = new RemoteWebDriver(new URL(gridUrl), options);
+		RetryCommand retryCommand = new RetryCommand(5, 10);
+		RemoteWebDriver driver = retryCommand.execute(() -> new RemoteWebDriver(new URL(gridUrl), options));
+		//driver = new RemoteWebDriver(new URL(gridUrl), options);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(300));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));		
 		driver.manage().timeouts().setScriptTimeout(Duration.ofSeconds(300));
 		driver.get("https://selenium.dev/");
 		System.out.println("Url loaded");
