@@ -30,6 +30,7 @@ public class Test2SeleniumSite16   {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(300));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));		
 		driver.manage().timeouts().setScriptTimeout(Duration.ofSeconds(300));
+		System.setProperty("webdriver.chrome.silentOutput", "true");
 		driver.get("https://selenium.dev/");
 		System.out.println("Url loaded");
 		System.out.println("Intentional Wait");
