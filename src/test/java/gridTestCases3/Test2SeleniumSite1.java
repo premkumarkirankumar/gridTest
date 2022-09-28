@@ -1,4 +1,4 @@
-package gridTestCases2;
+package gridTestCases3;
 
 import java.net.URL;
 import java.time.Duration;
@@ -15,7 +15,7 @@ import io.qameta.allure.Description;
 import utils.Base;
 import utils.RetryCommand;
 
-public class Test2SeleniumSite20   {
+public class Test2SeleniumSite1   {
 	public static WebDriver driver;
 	//public String gridUrl="http://10.62.234.23:4444";
 	
@@ -24,9 +24,19 @@ public class Test2SeleniumSite20   {
 	@Test
 	public void testSeleniumPage(String gridUrl) throws Exception {
 		ChromeOptions options = new ChromeOptions();
-		RetryCommand retryCommand = new RetryCommand(5, 60);
-		RemoteWebDriver driver = retryCommand.execute(() -> new RemoteWebDriver(new URL(gridUrl), options));
-		//driver = new RemoteWebDriver(new URL(gridUrl), options);
+		//RetryCommand retryCommand = new RetryCommand(5, 10);
+		//RemoteWebDriver driver = retryCommand.execute(() -> new RemoteWebDriver(new URL(gridUrl), options));
+		for ( int i = 1; i<=10; i++ ) {		
+		    System.out.println("Checking for Driver Instance in : "+i+" Iteration");
+			driver = new RemoteWebDriver(new URL(gridUrl), options);
+			System.out.println(driver.toString());
+			if (driver!=null) {
+				break;
+			}
+			Base.intentionalsleep();
+		}
+		
+		driver = new RemoteWebDriver(new URL(gridUrl), options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(300));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));		
 		driver.manage().timeouts().setScriptTimeout(Duration.ofSeconds(300));

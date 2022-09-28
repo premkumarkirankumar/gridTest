@@ -299,6 +299,12 @@ public class Base {
 		
 	}
 	
+	public static void intentionalsleep() throws Exception {
+			
+			Thread.sleep(30000);
+	
+	}
+	
 	public static void scrollUpDown() throws Exception {
 		Actions a = new Actions(driver);
 		//scroll down a page
