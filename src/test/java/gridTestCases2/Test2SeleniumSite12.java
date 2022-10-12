@@ -26,6 +26,9 @@ public class Test2SeleniumSite12 {
 		// RetryCommand retryCommand = new RetryCommand(5, 60);
 		// RemoteWebDriver driver = retryCommand.execute(() -> new RemoteWebDriver(new
 		// URL(gridUrl), options));
+		options.setPlatformName("LINUX");
+		// options.setBrowserVersion("106.0");
+		options.setScriptTimeout(Duration.ofSeconds(600));
 		driver = new RemoteWebDriver(new URL(gridUrl), options);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(300));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));

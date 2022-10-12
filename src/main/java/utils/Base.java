@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,20 +26,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.HasFullPageScreenshot;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-@Listeners({AllureReportListeners.class})
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+@Listeners({ AllureReportListeners.class })
 
 public class Base {
 
@@ -46,25 +44,25 @@ public class Base {
 	public Properties prop;
 	public static Logger log = LogManager.getLogger(Base.class.getName());
 	public static ThreadLocal<WebDriver> thisdriver = new ThreadLocal<WebDriver>();
-	//K8
-	//public String gridUrl="http://52.186.164.69:4444";
-	//On prem Selnium 4
-	public String gridUrl="http://10.62.234.23:4444";
+	// K8
+	// public String gridUrl="http://52.186.164.69:4444";
+	// On prem Selnium 4
+	public String gridUrl = "http://10.62.234.23:4444";
 
 	@BeforeSuite
 	public void cleanup() throws IOException {
 		deleteFolder("allure-results");
 	}
-	
+
 	@AfterSuite
 	public void teadDownTasks() throws Exception {
-		//runCMDAllure();
+		// runCMDAllure();
 	}
 
 	@BeforeMethod
 	public void setup(ITestContext context) throws IOException {
 		driver = initializeDriver();
-		//driver.get(prop.getProperty("url"));
+		// driver.get(prop.getProperty("url"));
 		context.setAttribute("WebDriver", driver);
 	}
 
@@ -73,7 +71,6 @@ public class Base {
 		driver.quit();
 	}
 
-	
 	/**
 	 * Method to initialize Driver
 	 * 
@@ -97,14 +94,12 @@ public class Base {
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("headless");
 				driver = new ChromeDriver(options);
-			}
-			else if (browserRun.equals("grid")) {
+			} else if (browserRun.equals("grid")) {
 				ChromeOptions options = new ChromeOptions();
 				driver = new RemoteWebDriver(new URL(gridUrl), options);
-			}
-			else {
+			} else {
 				WebDriverManager.chromedriver().setup();
-				
+
 				driver = new ChromeDriver();
 			}
 		} else if (browserName.equals("firefox")) {
@@ -113,12 +108,10 @@ public class Base {
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
 				driver = new FirefoxDriver(options);
-			}
-			else if (browserRun.equals("grid")) {
+			} else if (browserRun.equals("grid")) {
 				FirefoxOptions options = new FirefoxOptions();
 				driver = new RemoteWebDriver(new URL(gridUrl), options);
-			}
-			else {
+			} else {
 				driver = new FirefoxDriver();
 			}
 		} else if (browserName.equals("edge")) {
@@ -127,11 +120,10 @@ public class Base {
 				EdgeOptions options = new EdgeOptions();
 				options.addArguments("headless");
 				driver = new EdgeDriver(options);
-			}	else if (browserRun.equals("grid")) {
+			} else if (browserRun.equals("grid")) {
 				EdgeOptions options = new EdgeOptions();
 				driver = new RemoteWebDriver(new URL(gridUrl), options);
-			}
-			else {
+			} else {
 				driver = new EdgeDriver();
 			}
 
@@ -245,72 +237,76 @@ public class Base {
 		String destinationFile = System.getProperty("user.dir") + "\\" + pathToDelete + "\\";
 		FileUtils.deleteDirectory(new File(destinationFile));
 	}
-	
-	
+
 	/**
 	 * Method to run CMD for Allure
+	 * 
 	 * @throws Exception
 	 */
-	public void runCMDAllure( ) throws Exception {
-	       ProcessBuilder builder = new ProcessBuilder(
-	               "cmd.exe", "/c", "allure serve C:\\Users\\Kiran\\Documents\\AutomationProjects\\Selenium4Features\\allure-results");
-	           builder.redirectErrorStream(true);
-	           Process p = builder.start();
-	           BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
-	           String line;
-	           while (true) {
-	               line = r.readLine();
-	               if (line == null) { break; }
-	               log.info(line);
-	           }
+	public void runCMDAllure() throws Exception {
+		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c",
+				"allure serve C:\\Users\\Kiran\\Documents\\AutomationProjects\\Selenium4Features\\allure-results");
+		builder.redirectErrorStream(true);
+		Process p = builder.start();
+		BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		String line;
+		while (true) {
+			line = r.readLine();
+			if (line == null) {
+				break;
+			}
+			log.info(line);
+		}
 	}
-	
+
 	/**
 	 * Method to perform intentionalDelay
+	 * 
 	 * @param waitdelay
 	 * @param count
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public static void intentionalWait(int waitdelay, int count) throws Exception {
-		
-		for ( int i=1;i<=count;i++) {
+
+		for (int i = 1; i <= count; i++) {
 			Thread.sleep(waitdelay);
-			 log.info("Intention wait for "+i+" time");
-			 scrollUpDown();
+			log.info("Intention wait for " + i + " time");
+			scrollUpDown();
 		}
-		
+
 	}
-	
+
 	/**
 	 * Method to perform intentionalDelay
+	 * 
 	 * @param waitdelay
 	 * @param count
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public static void intentionalWaitValue() throws Exception {
-		
-		int count =2;
-		int waitDelay=30000;
-		for ( int i=1;i<=count;i++) {
+
+		int count = 2;
+		int waitDelay = 30000;
+		for (int i = 1; i <= count; i++) {
 			Thread.sleep(waitDelay);
-			 log.info("Intention wait for "+i+" time for " +waitDelay+ " mili seconds" );
+			log.info("Intention wait for " + i + " time for " + waitDelay + " mili seconds");
 			// scrollUpDown();
 		}
-		
+
 	}
-	
+
 	public static void intentionalsleep() throws Exception {
-			
-			Thread.sleep(30000);
-	
+
+		Thread.sleep(30000);
+
 	}
-	
+
 	public static void scrollUpDown() throws Exception {
 		Actions a = new Actions(driver);
-		//scroll down a page
+		// scroll down a page
 		a.sendKeys(Keys.PAGE_DOWN).build().perform();
 		Thread.sleep(3000);
-		//scroll up a page
+		// scroll up a page
 		a.sendKeys(Keys.PAGE_UP).build().perform();
 	}
 
