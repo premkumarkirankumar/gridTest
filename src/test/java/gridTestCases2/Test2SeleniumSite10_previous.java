@@ -14,13 +14,13 @@ import org.testng.annotations.Test;
 import io.qameta.allure.Description;
 import utils.Base;
 
-public class Test2SeleniumSite1 {
+public class Test2SeleniumSite10_previous {
 	public static WebDriver driver;
 	// public String gridUrl="http://10.62.234.23:4444";
 
 	@Description("Test to verify HomePage")
 	@Parameters("gridUrl")
-	@Test
+	//@Test
 	public void testSeleniumPage(String gridUrl) throws Exception {
 		ChromeOptions options = new ChromeOptions();
 		// RetryCommand retryCommand = new RetryCommand(5, 60);

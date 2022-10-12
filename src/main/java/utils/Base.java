@@ -290,7 +290,6 @@ public class Base {
 		for (int i = 1; i <= count; i++) {
 			Thread.sleep(waitDelay);
 			log.info("Intention wait for " + i + " time for " + waitDelay + " mili seconds");
-			// scrollUpDown();
 		}
 
 	}
