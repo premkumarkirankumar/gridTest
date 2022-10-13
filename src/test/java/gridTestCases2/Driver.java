@@ -4,13 +4,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.http.ClientConfig;
 
 public class Driver {
 	
-	public RemoteWebDriver createDriver(String gridUrl) throws MalformedURLException {
+	public WebDriver createDriver(String gridUrl) throws MalformedURLException {
 		System.setProperty("webdriver.chrome.silentOutput", "true");
 
 		ClientConfig config = ClientConfig.defaultConfig().readTimeout(Duration.ofMinutes(5))
@@ -21,11 +22,11 @@ public class Driver {
 		
 		//return new RemoteWebDriver(new URL(gridUrl), options);
 		
-		RemoteWebDriver driver = (RemoteWebDriver) RemoteWebDriver.builder()																  	
-				 												  .oneOf(options)
-				 												  .address(gridUrl)
-				 												  .config(config)
-				 												  .build();
+		WebDriver driver = RemoteWebDriver.builder()																  	
+				 			   		      .oneOf(options)
+				 						  .address(gridUrl)
+				 						  .config(config)
+				 						  .build();
 		
 		return driver;
 	}
