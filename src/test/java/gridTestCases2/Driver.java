@@ -13,14 +13,15 @@ public class Driver {
 	public RemoteWebDriver createDriver(String gridUrl) throws MalformedURLException {
 		System.setProperty("webdriver.chrome.silentOutput", "true");
 
-		ClientConfig config = ClientConfig.defaultConfig().readTimeout(Duration.ofMinutes(5));
+		ClientConfig config = ClientConfig.defaultConfig().readTimeout(Duration.ofMinutes(5))
+														  .connectionTimeout(Duration.ofMinutes(5);
 		 
 		ChromeOptions options = new ChromeOptions();
 		options.setPlatformName("LINUX");
 		
 		//return new RemoteWebDriver(new URL(gridUrl), options);
 		
-		RemoteWebDriver driver = (RemoteWebDriver) RemoteWebDriver.builder()
+		RemoteWebDriver driver = (RemoteWebDriver) RemoteWebDriver.builder()																  	
 				 												  .oneOf(options)
 				 												  .address(gridUrl)
 				 												  .config(config)
