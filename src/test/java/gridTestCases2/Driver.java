@@ -20,8 +20,6 @@ public class Driver {
 		ChromeOptions options = new ChromeOptions();
 		options.setPlatformName("LINUX");
 		
-		//return new RemoteWebDriver(new URL(gridUrl), options);
-		
 		WebDriver driver = RemoteWebDriver.builder()																  	
 				 			   		      .oneOf(options)
 				 						  .address(gridUrl)
