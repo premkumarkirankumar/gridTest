@@ -14,8 +14,8 @@ public class Driver {
 		
 		System.setProperty("webdriver.chrome.silentOutput", "true");
 
-		ClientConfig config = ClientConfig.defaultConfig().readTimeout(Duration.ofMinutes(10))
-														  .connectionTimeout(Duration.ofMinutes(10));
+		ClientConfig config = ClientConfig.defaultConfig().readTimeout(Duration.ofMinutes(5))
+														  .connectionTimeout(Duration.ofMinutes(5));
 		 
 		ChromeOptions options = new ChromeOptions();
 		options.setPlatformName("LINUX");
