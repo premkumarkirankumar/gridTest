@@ -20,6 +20,8 @@ public class LoginPage {
 	private By passwordId = By.id("password");
 	private By loginId    = By.id("login-button");
 	
+	private static int TIMEOUT = 2;
+	
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -35,24 +37,24 @@ public class LoginPage {
 	public void logInWith(String username, String password) {
 		
 		Pause pause = new Pause();
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebDriverWait wait = wait(10);
 		
 		WebElement userNameTextBox = wait.until(ExpectedConditions.elementToBeClickable(usernameId));
 		userNameTextBox.sendKeys(username);
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebElement passwordTextBox = wait.until(ExpectedConditions.elementToBeClickable(passwordId));
 		passwordTextBox.sendKeys(password);
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(loginId));
 		loginButton.click();
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 	}
 	

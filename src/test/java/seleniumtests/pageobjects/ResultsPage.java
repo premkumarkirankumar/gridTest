@@ -25,6 +25,8 @@ public class ResultsPage {
 	
 	private Pause pause;
 	
+	private static int TIMEOUT = 2;
+	
 	public ResultsPage(WebDriver driver) {
 		this.driver = driver;
 		
@@ -37,79 +39,79 @@ public class ResultsPage {
 	
 	public void addBackPackToCart() {
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebDriverWait wait = wait(10);
 		
 		WebElement addToCartBackPackButton = wait.until(ExpectedConditions.elementToBeClickable(addToCartBackPackId));
 		addToCartBackPackButton.click();
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 	}
 	
 	public void addBikeToCart() {
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebDriverWait wait = wait(10);
 		
 		WebElement addToCartBikeButton = wait.until(ExpectedConditions.elementToBeClickable(addToCartBikeId));
 		addToCartBikeButton.click();
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 	}
 	
 	public void addTeaShirtToCart() {
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebDriverWait wait = wait(10);
 		
 		WebElement addToCartTeaShirtButton = wait.until(ExpectedConditions.elementToBeClickable(addToCartTeaShirtId));
 		addToCartTeaShirtButton.click();
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 	}
 	
 	public void addJacketToCart() {
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebDriverWait wait = wait(10);
 		
 		WebElement addToCartJacketButton = wait.until(ExpectedConditions.elementToBeClickable(addToCartJacketId));
 		addToCartJacketButton.click();
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 	}
 	
 	public void goToShoppingCart() {
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebDriverWait wait = wait(10);
 		
 		WebElement shoppingCartLink = wait.until(ExpectedConditions.elementToBeClickable(shoppingCartXpath));
 		shoppingCartLink.click();
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 	}
 	
 	public int productCount() {
 
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebDriverWait wait = wait(10);
 		
 		WebElement shoppingCartLabel = wait.until(ExpectedConditions.elementToBeClickable(shoppingCartCountXpath));
 		String shoppingCartText = shoppingCartLabel.getText();
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		return Integer.parseInt(shoppingCartText);
 	}

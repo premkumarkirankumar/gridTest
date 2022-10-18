@@ -18,6 +18,8 @@ public class ShoppingCart {
 	
 	private Pause pause;
 	
+	private static int TIMEOUT = 2;
+	
 	public ShoppingCart(WebDriver driver) {
 		this.driver = driver;
 		
@@ -30,14 +32,14 @@ public class ShoppingCart {
 	
 	public void goToCheckoutInformation() {
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebDriverWait wait = wait(10);
 		
 		WebElement checkoutButton = wait.until(ExpectedConditions.elementToBeClickable(checkoutId));
 		checkoutButton.click();
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 	}
 	

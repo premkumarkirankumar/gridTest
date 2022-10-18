@@ -1,6 +1,5 @@
 package seleniumtests.framework;
 
-import java.net.MalformedURLException;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;

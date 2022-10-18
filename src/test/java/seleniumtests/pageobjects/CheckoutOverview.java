@@ -18,6 +18,8 @@ public class CheckoutOverview {
 	
 	private By finishId = By.id("finish");
 	
+	private static int TIMEOUT = 2;
+	
 	public CheckoutOverview(WebDriver driver) {
 		this.driver = driver;
 		
@@ -30,14 +32,14 @@ public class CheckoutOverview {
 	
 	public void finishCheckout() {
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 		WebDriverWait wait = wait(10);
 		
 		WebElement finishButton = wait.until(ExpectedConditions.elementToBeClickable(finishId));
 		finishButton.click();
 		
-		pause.forTimeout(1);
+		pause.forTimeout(TIMEOUT);
 		
 	}
 
