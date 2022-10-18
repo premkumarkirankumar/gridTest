@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import seleniumtests.framework.Pause;
 
+import static seleniumtests.framework.Constants.*;
+
 public class LoginPage {
 	
 	private WebDriver driver;
@@ -19,9 +21,7 @@ public class LoginPage {
 	private By usernameId = By.id("user-name");
 	private By passwordId = By.id("password");
 	private By loginId    = By.id("login-button");
-	
-	private static int TIMEOUT = 2;
-	
+		
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 	}

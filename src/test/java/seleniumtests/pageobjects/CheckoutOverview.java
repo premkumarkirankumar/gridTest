@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import seleniumtests.framework.Pause;
 
+import static seleniumtests.framework.Constants.*;
+
 public class CheckoutOverview {
 	
 	private WebDriver driver;
@@ -17,8 +19,6 @@ public class CheckoutOverview {
 	private Pause pause;
 	
 	private By finishId = By.id("finish");
-	
-	private static int TIMEOUT = 2;
 	
 	public CheckoutOverview(WebDriver driver) {
 		this.driver = driver;

@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import seleniumtests.framework.Pause;
 
+import static seleniumtests.framework.Constants.*;
+
 public class CheckoutInformation {
 
 	private WebDriver driver;
@@ -21,8 +23,6 @@ public class CheckoutInformation {
 	private By postalCodeId = By.id("postal-code");
 	
 	private By continueId   = By.id("continue");
-	
-	private static int TIMEOUT = 2;
 	
 	public CheckoutInformation(WebDriver driver) {
 		this.driver = driver;

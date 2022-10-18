@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import seleniumtests.framework.Pause;
+import static seleniumtests.framework.Constants.*;
 
 public class ResultsPage {
 
@@ -24,8 +25,6 @@ public class ResultsPage {
 	private By shoppingCartCountXpath = By.xpath("//span[@class = 'shopping_cart_badge']");
 	
 	private Pause pause;
-	
-	private static int TIMEOUT = 2;
 	
 	public ResultsPage(WebDriver driver) {
 		this.driver = driver;

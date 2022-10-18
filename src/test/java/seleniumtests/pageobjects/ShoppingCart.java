@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import seleniumtests.framework.Pause;
+import static seleniumtests.framework.Constants.*;
 
 public class ShoppingCart {
 	
@@ -17,8 +18,6 @@ public class ShoppingCart {
 	private By checkoutId = By.id("checkout");
 	
 	private Pause pause;
-	
-	private static int TIMEOUT = 2;
 	
 	public ShoppingCart(WebDriver driver) {
 		this.driver = driver;
